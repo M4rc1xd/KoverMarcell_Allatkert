@@ -1,3 +1,4 @@
+using System.Globalization;
 using Microsoft.VisualBasic;
 
 namespace Allatkert
@@ -39,29 +40,32 @@ namespace Allatkert
             string Hely = "  ";
             int osszAllat = Allatok.Count;
             int uresHely = nagysag - osszAllat;
-            Console.Write("|");
-            Console.BackgroundColor = ConsoleColor.DarkGreen;
-            for (int i = 0; i < osszAllat; i++)
-            {
+            for (int i = 5; i>0; i--){
+                Console.Clear();
+                Console.Write("|");
+                Console.BackgroundColor = ConsoleColor.DarkGreen;
+                for (int j = 0; j < osszAllat; j++)
+                {
+                    Console.Write(Hely);
+                }
+                Console.BackgroundColor = ConsoleColor.DarkGray;
+                for (int j = 0; j < uresHely; j++)
+                {
                 Console.Write(Hely);
-            }
-            Console.BackgroundColor = ConsoleColor.DarkGray;
-            for (int i = 0; i < uresHely; i++)
-            {
-                Console.Write(Hely);
-            }
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.WriteLine("|");
+                }
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.WriteLine("|");
 
-            System.Console.WriteLine("Allatkert teljes kapacitasa: " + nagysag);
-            System.Console.WriteLine("Az allatkertben jelenleg " + osszAllat + " allat van.");
-            System.Console.WriteLine("Az allatkert telitettsege: " + (osszAllat * 100 / nagysag) + "%");
-            System.Console.WriteLine("5 Masodperc mulva elindul a verseny");
+                System.Console.WriteLine("Allatkert teljes kapacitasa: " + nagysag);
+                System.Console.WriteLine("Az allatkertben jelenleg " + osszAllat + " allat van.");
+                System.Console.WriteLine("Az allatkert telitettsege: " + (osszAllat * 100 / nagysag) + "%");
+                System.Console.WriteLine($"{i} masodperc mulva elindul a verseny");
+                Thread.Sleep(1000);
+            }
             Verseny();
         }
 
         public void Verseny(){
-            Thread.Sleep(5000);
             int rajtIdo = 3;
             for (int i = rajtIdo; i>0; i--){
                 Console.Clear();
@@ -95,7 +99,7 @@ namespace Allatkert
                     Console.SetCursorPosition(cel, i+1);
                     System.Console.WriteLine("|");
                     if (allatHely[i] >= cel){
-                        System.Console.WriteLine($"NYERTES! {Allatok[index]} MEGNYERTE A VERSENYT");
+                        System.Console.WriteLine($"NYERTES! {Allatok[index].ToUpper()} MEGNYERTE A VERSENYT");
                         elso =allatHely[i];
                         break;
                     } else if (elso <allatHely[i]){
@@ -108,4 +112,3 @@ namespace Allatkert
         }
     }
 }
-//oroklodes/ ösosytalz

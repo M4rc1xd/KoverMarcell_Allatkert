@@ -86,12 +86,14 @@ namespace Allatkert
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
                 System.Console.WriteLine("RAJT");
-                Console.ForegroundColor = ConsoleColor.White;
                 Console.SetCursorPosition(cel, 0);
-                System.Console.WriteLine("|");
+                System.Console.WriteLine("CÉL");
+                Console.ForegroundColor = ConsoleColor.White;
                 for (int i = 0; i<allatHely.Count; i++){
                     Console.SetCursorPosition(allatHely[i]+=allatGyorsasag[i], i+1);
                     System.Console.WriteLine(Allatok[i]);
+                    Console.SetCursorPosition(cel, i+1);
+                    System.Console.WriteLine("|");
                     if (allatHely[i] >= cel){
                         System.Console.WriteLine($"NYERTES! {Allatok[index]} MEGNYERTE A VERSENYT");
                         elso =allatHely[i];

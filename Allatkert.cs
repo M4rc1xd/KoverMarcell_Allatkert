@@ -11,7 +11,7 @@ namespace Allatkert
         Hideg h1 = new Hideg("Jegesmedve", 4, "Fehér", 3);
         Tropusi t1 = new Tropusi("Majom", 3, "Fekete", 4);
         Meleg m1 = new Meleg("Zsiráf", 2, "Sarga", 5);
-        Mediterran me1 = new Mediterran("Szarvas", 5, "arna", 6);
+        Mediterran me1 = new Mediterran("Szarvas", 5, "Barna", 6);
 
         List<string> Allatok;
         List<int> allatGyorsasag;
@@ -102,16 +102,15 @@ namespace Allatkert
                     Console.SetCursorPosition(allatHely[i]+=allatGyorsasag[i]+r.Next(minusz,plusz), i+1);
                     System.Console.WriteLine(Allatok[i]);
                     if (allatHely[i]+Allatok[i].Length >= cel){
-                        System.Console.WriteLine($"NYERTES! {Allatok[index].ToUpper()} MEGNYERTE A VERSENYT");
-                        elso =allatHely[i]+Allatok[i].Length;
-                        break;
+                        elso = allatHely[i]+Allatok[i].Length;
+                        index = i;
                     } else if (elso <allatHely[i]){
-                        elso = allatHely[i];
+                        elso = allatHely[i]+Allatok[i].Length;
                         index = i;
                     }
                 };
-
             }
+            System.Console.WriteLine($"NYERTES! A {Allatok[index].ToUpper()} MEGNYERTE A VERSENYT");
         }
     }
 }

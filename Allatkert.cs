@@ -5,6 +5,7 @@ namespace Allatkert
 {
     public class Allatkert
     {
+        static Random r = new Random();
         int nagysag;
         Viz v1 = new Viz("Keszeg", 1, "Piros", 2);
         Hideg h1 = new Hideg("Jegesmedve", 4, "Fehér", 3);
@@ -85,6 +86,8 @@ namespace Allatkert
             int cel = 50;
             int index = 0;
             int elso = 0;
+            int minusz = -2;
+            int plusz = 3;
             while (elso < cel){
                 Thread.Sleep(1000);
                 Console.Clear();
@@ -96,7 +99,7 @@ namespace Allatkert
                 for (int i = 0; i<allatHely.Count; i++){
                     Console.SetCursorPosition(cel, i+1);
                     System.Console.WriteLine("|");
-                    Console.SetCursorPosition(allatHely[i]+=allatGyorsasag[i], i+1);
+                    Console.SetCursorPosition(allatHely[i]+=allatGyorsasag[i]+r.Next(minusz,plusz), i+1);
                     System.Console.WriteLine(Allatok[i]);
                     if (allatHely[i]+Allatok[i].Length >= cel){
                         System.Console.WriteLine($"NYERTES! {Allatok[index].ToUpper()} MEGNYERTE A VERSENYT");
